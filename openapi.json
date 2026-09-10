@@ -1,0 +1,818 @@
+{
+  "components": {
+    "schemas": {
+      "AuditCheck": {
+        "properties": {
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "checkDescription": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Checkdescription"
+          },
+          "checkId": {
+            "title": "Checkid",
+            "type": "integer"
+          },
+          "checkStatus": {
+            "title": "Checkstatus",
+            "type": "string"
+          },
+          "createdAt": {
+            "title": "Createdat",
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "recommendations": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recommendations"
+          },
+          "severity": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Severity"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "checkId",
+          "name",
+          "category",
+          "createdAt",
+          "checkStatus",
+          "source"
+        ],
+        "title": "AuditCheck",
+        "type": "object"
+      },
+      "AuditDetail": {
+        "properties": {
+          "auditStatus": {
+            "title": "Auditstatus",
+            "type": "string"
+          },
+          "checks": {
+            "items": {
+              "$ref": "#/components/schemas/AuditCheck"
+            },
+            "title": "Checks",
+            "type": "array"
+          },
+          "createdAt": {
+            "title": "Createdat",
+            "type": "string"
+          },
+          "description": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Description"
+          },
+          "domainId": {
+            "title": "Domainid",
+            "type": "integer"
+          },
+          "domainName": {
+            "title": "Domainname",
+            "type": "string"
+          },
+          "history": {
+            "items": {
+              "$ref": "#/components/schemas/AuditHistoryEntry"
+            },
+            "title": "History",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "recommendations": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Recommendations"
+          },
+          "resultIndicator": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resultindicator"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "domainId",
+          "domainName",
+          "auditStatus",
+          "source",
+          "history",
+          "checks"
+        ],
+        "title": "AuditDetail",
+        "type": "object"
+      },
+      "AuditHistoryEntry": {
+        "properties": {
+          "at": {
+            "title": "At",
+            "type": "string"
+          },
+          "auditStatus": {
+            "title": "Auditstatus",
+            "type": "string"
+          }
+        },
+        "required": [
+          "auditStatus",
+          "at"
+        ],
+        "title": "AuditHistoryEntry",
+        "type": "object"
+      },
+      "AuditListResponse": {
+        "properties": {
+          "audits": {
+            "items": {
+              "$ref": "#/components/schemas/AuditSummary"
+            },
+            "title": "Audits",
+            "type": "array"
+          },
+          "nextCursor": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nextcursor"
+          }
+        },
+        "required": [
+          "audits"
+        ],
+        "title": "AuditListResponse",
+        "type": "object"
+      },
+      "AuditStatusResponse": {
+        "properties": {
+          "auditStatus": {
+            "title": "Auditstatus",
+            "type": "string"
+          },
+          "resultIndicator": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resultindicator"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          }
+        },
+        "required": [
+          "auditStatus"
+        ],
+        "title": "AuditStatusResponse",
+        "type": "object"
+      },
+      "AuditSummary": {
+        "properties": {
+          "auditStatus": {
+            "title": "Auditstatus",
+            "type": "string"
+          },
+          "createdAt": {
+            "title": "Createdat",
+            "type": "string"
+          },
+          "domainId": {
+            "title": "Domainid",
+            "type": "integer"
+          },
+          "domainName": {
+            "title": "Domainname",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "resultIndicator": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Resultindicator"
+          },
+          "score": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Score"
+          },
+          "source": {
+            "title": "Source",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "createdAt",
+          "domainId",
+          "domainName",
+          "auditStatus",
+          "source"
+        ],
+        "title": "AuditSummary",
+        "type": "object"
+      },
+      "CreateAuditRequest": {
+        "properties": {
+          "domainId": {
+            "title": "Domainid",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "domainId"
+        ],
+        "title": "CreateAuditRequest",
+        "type": "object"
+      },
+      "CreatedAudit": {
+        "properties": {
+          "auditStatus": {
+            "title": "Auditstatus",
+            "type": "string"
+          },
+          "checkCount": {
+            "title": "Checkcount",
+            "type": "integer"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "id",
+          "auditStatus",
+          "checkCount"
+        ],
+        "title": "CreatedAudit",
+        "type": "object"
+      },
+      "DomainListResponse": {
+        "properties": {
+          "activeLimit": {
+            "title": "Activelimit",
+            "type": "integer"
+          },
+          "domains": {
+            "items": {
+              "$ref": "#/components/schemas/DomainResponse"
+            },
+            "title": "Domains",
+            "type": "array"
+          }
+        },
+        "required": [
+          "domains",
+          "activeLimit"
+        ],
+        "title": "DomainListResponse",
+        "type": "object"
+      },
+      "DomainResponse": {
+        "properties": {
+          "createdAt": {
+            "title": "Createdat",
+            "type": "string"
+          },
+          "emailVerifiedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Emailverifiedat"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "isActiveForCheck": {
+            "title": "Isactiveforcheck",
+            "type": "boolean"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "txtVerifiedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Txtverifiedat"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "createdAt",
+          "isActiveForCheck"
+        ],
+        "title": "DomainResponse",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    },
+    "securitySchemes": {
+      "bearerAuth": {
+        "scheme": "bearer",
+        "type": "http"
+      }
+    }
+  },
+  "info": {
+    "title": "Magery Forge Agent API",
+    "version": "v1"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/agents/v1/audits": {
+      "get": {
+        "operationId": "list_audits_api_agents_v1_audits_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "domain",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Domain"
+            }
+          },
+          {
+            "in": "query",
+            "name": "from",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "From"
+            }
+          },
+          {
+            "in": "query",
+            "name": "to",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "format": "date",
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "To"
+            }
+          },
+          {
+            "in": "query",
+            "name": "source",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Source"
+            }
+          },
+          {
+            "in": "query",
+            "name": "auditStatus",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Auditstatus"
+            }
+          },
+          {
+            "in": "query",
+            "name": "result",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Result"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "default": 20,
+              "maximum": 100,
+              "minimum": 1,
+              "title": "Limit",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "cursor",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Cursor"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Audits",
+        "tags": [
+          "agents-api"
+        ]
+      },
+      "post": {
+        "operationId": "create_audit_api_agents_v1_audits_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/CreateAuditRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "201": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CreatedAudit"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Audit",
+        "tags": [
+          "agents-api"
+        ]
+      }
+    },
+    "/api/agents/v1/audits/{audit_id}": {
+      "get": {
+        "operationId": "get_audit_api_agents_v1_audits__audit_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditDetail"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Audit",
+        "tags": [
+          "agents-api"
+        ]
+      }
+    },
+    "/api/agents/v1/audits/{audit_id}/status": {
+      "get": {
+        "operationId": "get_audit_status_api_agents_v1_audits__audit_id__status_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "audit_id",
+            "required": true,
+            "schema": {
+              "title": "Audit Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AuditStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Audit Status",
+        "tags": [
+          "agents-api"
+        ]
+      }
+    },
+    "/api/agents/v1/domains": {
+      "get": {
+        "operationId": "list_domains_api_agents_v1_domains_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "List Domains",
+        "tags": [
+          "agents-api"
+        ]
+      }
+    }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ],
+  "x-generated-by": "GENERATED FILE \u2014 DO NOT EDIT. Produced by `python -m app.scripts.build_agents_docs` from backend/."
+}

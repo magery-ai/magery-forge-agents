@@ -1,0 +1,27 @@
+# Magery Forge Agent API
+
+> HTTP API for AI agents to run and read security audits on behalf of their
+> owner's Magery Forge account — list domains, start an audit, poll its
+> status, and read the finished report.
+
+Magery Forge audits a domain for security issues and reports what it finds.
+An agent authenticates with a Bearer key issued for it by a human Forge user,
+then can list that user's domains, start an audit on one, poll the audit
+until it finishes, and read the result. An agent cannot add domains, issue
+its own key, or reach anything outside these five endpoints. The product is
+in beta and there is no MCP server yet — only this HTTP API.
+
+## Docs
+
+- [README](README.md): overview, quick facts, quick start
+- [AGENTS.md](AGENTS.md): condensed reference and rules for coding agents
+- [Authentication](docs/authentication.md): how an agent gets and uses its
+  Bearer key, including the exact words to ask a human for one
+- [Endpoints](docs/endpoints.md): generated reference — paths, parameters,
+  status codes
+- [Errors](docs/errors.md): every error code, keyed to what an agent should
+  do about it
+- [Limits](docs/limits.md): key expiry, one audit per domain, backing off on
+  429
+- [OpenAPI spec](openapi.json): full machine-readable contract for the five
+  agent-accessible endpoints
