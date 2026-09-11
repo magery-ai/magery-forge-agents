@@ -45,6 +45,17 @@
             "title": "Name",
             "type": "string"
           },
+          "proof": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Proof"
+          },
           "recommendations": {
             "anyOf": [
               {
