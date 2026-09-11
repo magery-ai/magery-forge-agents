@@ -11,7 +11,10 @@ Streamable HTTP at `https://forge.magery.ai/mcp`. It offers the same six
 operations as the HTTP API below, available as MCP tools: `list_domains`,
 `get_domain`, `list_audits`, `start_audit`, `get_audit_status`,
 `get_audit`. It takes the same `Authorization: Bearer <key>` as the HTTP
-API — the same key, not a second one to issue.
+API — the same key, not a second one to issue. See
+[docs/mcp.md](docs/mcp.md) for the full tool reference — every argument,
+its type, and its default — and [examples/mcp_session.py](examples/mcp_session.py)
+for a runnable session over MCP.
 
 ## Base URL
 

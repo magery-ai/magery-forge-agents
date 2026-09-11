@@ -30,3 +30,5 @@ there.
   429
 - [OpenAPI spec](openapi.json): full machine-readable contract for the six
   agent-accessible endpoints
+- [MCP](docs/mcp.md): generated tool reference for the same six operations
+  over MCP — every argument, its type, and its default

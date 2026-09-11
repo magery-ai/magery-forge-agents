@@ -10,7 +10,7 @@ to a new version prefix rather than silently changing this one. Forge also
 exposes an MCP server, over Streamable HTTP at `https://forge.magery.ai/mcp`,
 with the same six operations available as MCP tools and authenticated with
 the same Bearer key as the HTTP API — see [AGENTS.md](AGENTS.md) for the
-tool names.
+tool names and [docs/mcp.md](docs/mcp.md) for the full tool reference.
 
 ## Quick facts
 
@@ -40,6 +40,8 @@ tool names.
   Bearer key, the header it sends, and what to do when a key stops working
 - [docs/endpoints.md](docs/endpoints.md) — generated endpoint reference
   (paths, parameters, status codes)
+- [docs/mcp.md](docs/mcp.md) — generated MCP tool reference: the same six
+  operations as MCP tools, each with its arguments, types and defaults
 - [docs/errors.md](docs/errors.md) — every error code the API returns, what
   it means, and what your agent should do about it
 - [docs/limits.md](docs/limits.md) — key expiry, one audit per domain at a
