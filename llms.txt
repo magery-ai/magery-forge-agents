@@ -7,9 +7,14 @@
 Magery Forge audits a domain for security issues and reports what it finds.
 An agent authenticates with a Bearer key issued for it by a human Forge user,
 then can list that user's domains, start an audit on one, poll the audit
-until it finishes, and read the result. An agent cannot add domains, issue
-its own key, or reach anything outside these five endpoints. The product is
-in beta and there is no MCP server yet — only this HTTP API.
+until it finishes, and read the result. The product is in beta. An agent cannot add domains, issue its own key, or
+reach anything beyond these six operations — available both over the HTTP
+API and, over Streamable HTTP at https://forge.magery.ai/mcp, as MCP tools —
+list_domains, get_domain, list_audits, start_audit, get_audit_status,
+get_audit — using the same Bearer key either way. If
+https://forge.magery.ai/mcp returns 404, MCP routing is not enabled on this
+deployment and the HTTP API is the way in; every operation is available
+there.
 
 ## Docs
 
@@ -23,5 +28,5 @@ in beta and there is no MCP server yet — only this HTTP API.
   do about it
 - [Limits](docs/limits.md): key expiry, one audit per domain, backing off on
   429
-- [OpenAPI spec](openapi.json): full machine-readable contract for the five
+- [OpenAPI spec](openapi.json): full machine-readable contract for the six
   agent-accessible endpoints

@@ -60,3 +60,13 @@ Get Audit Status
 List Domains
 
 **Responses:** `200`, `422`
+
+## `GET /domains/{domain_id}`
+
+Get Domain
+
+**Parameters**
+
+- `domain_id` (path, required)
+
+**Responses:** `200`, `422`

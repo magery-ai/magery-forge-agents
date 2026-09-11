@@ -818,6 +818,48 @@
           "agents-api"
         ]
       }
+    },
+    "/api/agents/v1/domains/{domain_id}": {
+      "get": {
+        "operationId": "get_domain_api_agents_v1_domains__domain_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "domain_id",
+            "required": true,
+            "schema": {
+              "title": "Domain Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/DomainResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Domain",
+        "tags": [
+          "agents-api"
+        ]
+      }
     }
   },
   "security": [

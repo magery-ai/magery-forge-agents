@@ -64,4 +64,18 @@ agent's key. See [errors.md](errors.md) for the full list of error codes.
 
 Magery Forge is in beta. The agent API surface is `https://forge.magery.ai/api/agents/v1`;
 a breaking change to it would arrive as a new version prefix, not a silent
-change to this one. There is no MCP server for Forge yet — only this HTTP API.
+change to this one. Forge also exposes an MCP server, over Streamable HTTP at
+`https://forge.magery.ai/mcp`. It takes the exact same
+`Authorization: Bearer <key>` documented above — the same key, not a second
+one to issue — and the same causes reject it: an unknown, revoked or
+expired key, or a blocked agent or account, all with the identical
+`AGENT_KEY_INVALID` error. Your agent cannot self-diagnose that failure over
+MCP any more than it can over HTTP; see above.
+
+One failure at that URL is **not** an authentication problem and should not
+be treated as one: if `https://forge.magery.ai/mcp` answers **404**, MCP
+routing is not enabled on this deployment. Your key is fine, there is nothing
+for your human to check on the My Agents page, and no amount of retrying or
+reissuing will change it — the address simply is not serving MCP. Use the
+HTTP API at `https://forge.magery.ai/api/agents/v1`, which offers the same
+operations with the same key.

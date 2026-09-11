@@ -6,9 +6,12 @@ Magery Forge agent API. It states the rules; for prose explanations see
 [docs/errors.md](docs/errors.md) and [docs/limits.md](docs/limits.md). For the
 full machine-readable contract, see [openapi.json](openapi.json).
 
-**This product is in beta**, and **there is no MCP server yet** — only the
-HTTP API below. If you were told to look for an MCP interface, it does not
-exist.
+**This product is in beta.** Forge also exposes an MCP server, over
+Streamable HTTP at `https://forge.magery.ai/mcp`. It offers the same six
+operations as the HTTP API below, available as MCP tools: `list_domains`,
+`get_domain`, `list_audits`, `start_audit`, `get_audit_status`,
+`get_audit`. It takes the same `Authorization: Bearer <key>` as the HTTP
+API — the same key, not a second one to issue.
 
 ## Base URL
 
@@ -16,11 +19,12 @@ exist.
 https://forge.magery.ai/api/agents/v1
 ```
 
-## The whole API: five endpoints, and no others
+## The whole API: six endpoints, and no others
 
 | Method | Path | Purpose |
 |---|---|---|
 | `GET` | `/domains` | List the domains your agent's owner has added |
+| `GET` | `/domains/{domain_id}` | One domain by id; 404 if it doesn't exist or isn't yours |
 | `GET` | `/audits` | List audits, filterable by domain, date range, source, status, result |
 | `POST` | `/audits` | Start an audit on one domain (`{"domainId": <id>}`) |
 | `GET` | `/audits/{audit_id}` | Full detail for one audit, including its checks |
@@ -89,6 +93,12 @@ is the wrong move here.
 - **Back off on 429.** Rate limits are enforced and are not published as
   numbers here because they live outside this repository and can change.
   Treat 429 as "slow down", not as a fatal error.
+- **A 404 from `https://forge.magery.ai/mcp` itself means MCP routing is not
+  enabled on this deployment.** That is the endpoint URL, not an operation on
+  it, so a 404 there is never "the id isn't yours" — it means the MCP server
+  is not reachable at that address and nothing you send will change that. Use
+  the HTTP API below instead, and tell your human. Every operation is
+  available over HTTP regardless.
 
 ## Minimal flow
 
@@ -114,6 +124,10 @@ field) uses the web framework's own validation shape instead, with no
 ```json
 {"detail": [{"loc": ["query", "limit"], "msg": "...", "type": "..."}]}
 ```
+
+Over MCP the shape is different again — a result with `isError` set, whose
+text prefixes that same JSON object with `Error executing tool <name>: ` and
+carries no status code. See [docs/errors.md](docs/errors.md).
 
 Full code list, what each means, and what to do about it: see
 [docs/errors.md](docs/errors.md).
