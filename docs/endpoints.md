@@ -9,6 +9,14 @@ Every endpoint below is under `https://forge.magery.ai/api/agents/v1`, takes
 defaults and schema fields are in `../openapi.json`; error codes and what to
 do about them are in `errors.md`.
 
+**Some response fields are display prose, and display prose is localized.** A
+check's `name` and `category` are rendered in the owning account's language
+and change when that account changes language; the same audit read by a
+Russian-speaking owner and an English-speaking one returns different strings
+for both. They are labels for a human to read, not identifiers. Match a check
+on its `slug` — the stable identifier, which does not change — or on its
+`checkId`.
+
 
 ## `GET /audits`
 

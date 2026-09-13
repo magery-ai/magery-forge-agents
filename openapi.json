@@ -78,6 +78,10 @@
             ],
             "title": "Severity"
           },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          },
           "source": {
             "title": "Source",
             "type": "string"
@@ -85,6 +89,7 @@
         },
         "required": [
           "checkId",
+          "slug",
           "name",
           "category",
           "createdAt",

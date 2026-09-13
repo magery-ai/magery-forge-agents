@@ -141,9 +141,13 @@ Get the full results of one audit.
 Requires audit_id, the id returned by start_audit or list_audits.
 Returns the audit's status, overall result and score, an overview
 description and top-level recommendations, its history of status
-changes over time, and every check that ran: each check's name,
+changes over time, and every check that ran: each check's slug, name,
 category, status, result severity, what this run found, what the check
 looks for in general, and what to do about a failure.
+
+A check's name and category are localized to the owning account's
+locale and change when that account changes language. Match a check on
+its slug or its checkId, never on its name or category.
 
 **Arguments**
 
