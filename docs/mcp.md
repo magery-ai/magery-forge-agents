@@ -87,7 +87,7 @@ absent on the last page.
 | `domain` | string | — | — | no | none |
 | `date_from` | date (`YYYY-MM-DD`) | — | — | no | none |
 | `date_to` | date (`YYYY-MM-DD`) | — | — | no | none |
-| `source` | string | `on_demand`, `autopilot` | — | no | none |
+| `source` | string | `on_demand`, `autopilot`, `admin` | — | no | none |
 | `audit_status` | string | `new`, `in_progress`, `done`, `error` | — | no | none |
 | `result` | string | `green`, `yellow`, `red` | — | no | none |
 | `limit` | integer | — | 1–100 | no | `20` |
